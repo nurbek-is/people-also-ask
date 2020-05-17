@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="../styles.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
+  integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+  crossorigin="anonymous">
+
+<script>
+  function toggleDisplay(divAnswer) {
+      const classlistDown= document.getElementsByClassName("fas fa-chevron-down chevron");
+      let parentOfArrow=divAnswer.parentNode.firstElementChild;
+      let downArrow=parentOfArrow.firstElementChild.nextElementSibling;
+      let upArrow=parentOfArrow.firstElementChild;
+
+    if(getComputedStyle(divAnswer).display==='block') {
+      divAnswer.style.display='none';
+      parentOfArrow.style.opacity='.5';
+      downArrow.style.display='none';
+      upArrow.style.display='block';
+  }
+     else {
+      divAnswer.style.display='block'; 
+      parentOfArrow.style.fontWeight='bolder';
+      upArrow.style.display='none';
+      downArrow.style.display='block';
+    }
+  }
+  function toggleAnswer(e){
+    let iClassChevronArrowTarget=e.target;
+    let divAnswer=iClassChevronArrowTarget.parentNode.nextElementSibling;
+    toggleDisplay(divAnswer);
+  }
+  window.addEventListener('load', function(e) {
+    const questions = document.querySelectorAll('.question');
+    for (question of questions) {
+      question.addEventListener('click', toggleAnswer);
+    }
+  });
+</script>
+<title>People Also Ask</title>
+</head>
+<body id="people-also-ask">
+<main>
+  <h1>People also ask</h1>
+  <ul id="questions">
+    <li>
+      <div class="question">
+        How do I enable JavaScript Chrome?
+        <i class="fas fa-chevron-down chevron" ></i>
+        <i class="fas fa-chevron-up chevron" style='display:none'></i>
+      </div>
+      <div class="answer">
+        <p><strong>If you'd like to turn JavaScript 
+    off or on for all sites:</strong></p>
+        <ol>
+          <li>Click the Chrome menu in the top right-hand
+      corner of your browser.</li>
+          <li>Select Settings.</li>
+          <li>Click Show advanced settings.</li>
+          <li>Under the "Privacy" section, 
+      click the Content settings button.</li>
+        </ol>
+      </div>
+    </li>
+    <li>
+      <div class="question">
+        What do you use JavaScript for?
+        <i class="fas fa-chevron-down chevron" ></i>
+        <i class="fas fa-chevron-up chevron" style='display:none'></i>
+      </div>
+      <div class="answer">
+        <p>JavaScript is most commonly used as a client side scripting language.
+          This means that JavaScript code is written into an HTML page.
+          When a user requests an HTML page with JavaScript in it, the script is
+          sent to the browser and it's up to the browser to do something with it.</p>
+      </div>
+    </li>
+    <li>
+      <div class="question">
+        What does JavaScript do?
+        <i class="fas fa-chevron-down chevron" ></i>
+        <i class="fas fa-chevron-up chevron" style='display:none'></i>
+      </div>
+      <div class="answer">
+        <p>Used in Web pages, JavaScript is a "client-side" programming language.
+          This means JavaScript scripts are read, interpreted and executed in the
+          client, which is your Web browser. By comparison, "server-side" programming
+          languages run on a remote computer, such as a server hosting a website.</p>
+      </div>
+    </li>
+    <li>
+      <div class="question">
+        What is '$' in Javascript?
+        <i class="fas fa-chevron-down chevron" ></i>
+        <i class="fas fa-chevron-up chevron" style='display:none'></i>
+      </div>
+      <div class="answer">
+        <p>$ is simply a valid JavaScript identifier. JavaScript allows upper and
+          lower letters, numbers, and $ and _ . The $ was intended to be used for
+          machine-generated variables (such as $0001 ). Prototype, jQuery, and most
+          javascript libraries use the $ as the primary base object (or function).</p>
+      </div>
+    </li>
+    <li>
+      <div class="question">
+        Is it useful to learn Javascript?
+        <i class="fas fa-chevron-down chevron" ></i>
+        <i class="fas fa-chevron-up chevron" style='display:none'></i>
+      </div>
+      <div class="answer">
+        <p>JavaScript has become an essential web technology along with HTML and CSS,
+          as most browsers implement JavaScript. ... Furthermore, JavaScript usage has
+          now extended to mobile app development, desktop app development, and game
+          development. All in all, it has exploded in popularity and is now a very
+          useful skill to learn.</p>
+      </div>
+    </li>
+  </ul>
+</main>
+</body>
+</html>
