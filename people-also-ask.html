@@ -7,32 +7,41 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
   integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
   crossorigin="anonymous">
-
 <script>
-  function toggleDisplay(divAnswer) {
-      const classlistDown= document.getElementsByClassName("fas fa-chevron-down chevron");
-      let parentOfArrow=divAnswer.parentNode.firstElementChild;
-      let downArrow=parentOfArrow.firstElementChild.nextElementSibling;
-      let upArrow=parentOfArrow.firstElementChild;
 
+  function toggleDisplay(divAnswer) {
     if(getComputedStyle(divAnswer).display==='block') {
       divAnswer.style.display='none';
-      parentOfArrow.style.opacity='.5';
-      downArrow.style.display='none';
-      upArrow.style.display='block';
   }
      else {
       divAnswer.style.display='block'; 
-      parentOfArrow.style.fontWeight='bolder';
-      upArrow.style.display='none';
-      downArrow.style.display='block';
     }
   }
-  function toggleAnswer(e){
-    let iClassChevronArrowTarget=e.target;
-    let divAnswer=iClassChevronArrowTarget.parentNode.nextElementSibling;
-    toggleDisplay(divAnswer);
+
+  function markRead(elem) {
+    elem.style.opacity=.5;
   }
+
+  function toggleBold(elem) {
+    const weight = getComputedStyle(elem).fontWeight;
+    if (weight ==='bold' || weight > 400) {
+      elem.style.fontWeight="normal";
+      markRead(elem)
+    } else {
+      elem.style.fontWeight='bold';
+    }
+  }
+
+  function toggleAnswer(e){
+    const question = e.currentTarget;
+    const answer = question.nextElementSibling;
+    toggleDisplay(answer);
+    toggleBold(question)
+    const chevron=question.querySelector('.chevron');
+    chevron.classList.toggle('fa-chevron-down');
+    chevron.classList.toggle('fa-chevron-up')
+  }
+  
   window.addEventListener('load', function(e) {
     const questions = document.querySelectorAll('.question');
     for (question of questions) {
@@ -49,8 +58,7 @@
     <li>
       <div class="question">
         How do I enable JavaScript Chrome?
-        <i class="fas fa-chevron-down chevron" ></i>
-        <i class="fas fa-chevron-up chevron" style='display:none'></i>
+        <i class="fas fa-chevron-down chevron"></i>
       </div>
       <div class="answer">
         <p><strong>If you'd like to turn JavaScript 
@@ -68,8 +76,7 @@
     <li>
       <div class="question">
         What do you use JavaScript for?
-        <i class="fas fa-chevron-down chevron" ></i>
-        <i class="fas fa-chevron-up chevron" style='display:none'></i>
+        <i class="fas fa-chevron-down chevron"></i>
       </div>
       <div class="answer">
         <p>JavaScript is most commonly used as a client side scripting language.
@@ -81,8 +88,7 @@
     <li>
       <div class="question">
         What does JavaScript do?
-        <i class="fas fa-chevron-down chevron" ></i>
-        <i class="fas fa-chevron-up chevron" style='display:none'></i>
+        <i class="fas fa-chevron-down chevron"></i>
       </div>
       <div class="answer">
         <p>Used in Web pages, JavaScript is a "client-side" programming language.
@@ -94,8 +100,7 @@
     <li>
       <div class="question">
         What is '$' in Javascript?
-        <i class="fas fa-chevron-down chevron" ></i>
-        <i class="fas fa-chevron-up chevron" style='display:none'></i>
+        <i class="fas fa-chevron-down chevron"></i>
       </div>
       <div class="answer">
         <p>$ is simply a valid JavaScript identifier. JavaScript allows upper and
@@ -107,8 +112,7 @@
     <li>
       <div class="question">
         Is it useful to learn Javascript?
-        <i class="fas fa-chevron-down chevron" ></i>
-        <i class="fas fa-chevron-up chevron" style='display:none'></i>
+        <i class="fas fa-chevron-down chevron"></i>
       </div>
       <div class="answer">
         <p>JavaScript has become an essential web technology along with HTML and CSS,
